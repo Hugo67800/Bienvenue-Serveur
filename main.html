@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue — SMP Le Labo du Dev</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #0d0e15;
+            color: #cdd6f4;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .card {
+            background: rgba(24, 24, 37, 0.9);
+            border: 2px solid #313244;
+            border-radius: 20px;
+            padding: 40px;
+            width: 80%;
+            max-width: 900px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(108, 113, 255, 0.2);
+            animation: pulse 4s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 25px rgba(108, 113, 255, 0.2); }
+            100% { box-shadow: 0 0 45px rgba(108, 113, 255, 0.5); }
+        }
+
+        .badge {
+            display: inline-block;
+            background: #6c71ff;
+            color: #fff;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 42px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        h1 span {
+            color: #89b4fa;
+        }
+
+        p.subtitle {
+            font-size: 20px;
+            color: #a6adc8;
+            margin-bottom: 30px;
+        }
+
+        .clock-container {
+            background: #11111b;
+            border: 1px solid #45475a;
+            border-radius: 12px;
+            padding: 20px;
+            display: inline-block;
+            margin-bottom: 30px;
+            min-width: 280px;
+        }
+
+        .time {
+            font-size: 38px;
+            font-weight: bold;
+            color: #a6e3a1;
+            font-family: monospace;
+        }
+
+        .date {
+            font-size: 14px;
+            color: #585b70;
+            margin-top: 5px;
+        }
+
+        .rules-box {
+            display: flex;
+            justify-content: space-around;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .rule {
+            background: #181825;
+            border: 1px solid #313244;
+            padding: 12px;
+            border-radius: 10px;
+            flex: 1;
+            font-size: 14px;
+            color: #b4befe;
+        }
+
+        footer {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #585b70;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="badge">Serveur Officiel</div>
+        <h1>Bienvenue sur <span>Le Labo du Dev</span> !</h1>
+        <p class="subtitle">Minecraft SMP — Saison 1</p>
+
+        <div class="clock-container">
+            <div class="time" id="clock">00:00:00</div>
+            <div class="date" id="date">Chargement...</div>
+        </div>
+
+        <div class="rules-box">
+            <div class="rule">⚡ Respect & Fair-play</div>
+            <div class="rule">🔧 Pas de cheats / exploits</div>
+            <div class="rule">💬 Amusez-vous bien !</div>
+        </div>
+
+        <footer>Projet propulsé par le Launcher Le Labo du Développeur</footer>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('date').textContent = now.toLocaleDateString('fr-FR', options);
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
